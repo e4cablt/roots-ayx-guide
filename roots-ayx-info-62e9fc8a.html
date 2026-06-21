@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>爱游戏 · 杂志专题 | 轻松发现你的下一款游戏</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f3f7fa;
+      color: #1e2b3c;
+      line-height: 1.6;
+      padding: 24px 16px 48px;
+    }
+
+    .page-wrapper {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* ——— 杂志式横幅 ——— */
+    .magazine-hero {
+      background: linear-gradient(140deg, #e1f0ef 0%, #c5e2e0 70%, #b3d6d3 100%);
+      border-radius: 32px 32px 24px 24px;
+      padding: 40px 28px 32px;
+      margin-bottom: 40px;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0, 70, 60, 0.08);
+    }
+
+    .magazine-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #2f7c7a, transparent);
+      opacity: 0.3;
+    }
+
+    .magazine-hero h1 {
+      font-size: 2.6rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      color: #094c4a;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .magazine-hero .sub-label {
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(2px);
+      display: inline-block;
+      padding: 2px 14px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1f5f5c;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .magazine-hero p {
+      font-size: 1.08rem;
+      color: #1b4644;
+      max-width: 600px;
+      margin-top: 6px;
+    }
+
+    .magazine-hero .deco-line {
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #1f7a76;
+      border-radius: 4px;
+      margin: 16px 0 10px;
+    }
+
+    /* ——— 卡片网格 ——— */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 28px 22px 22px;
+      box-shadow: 0 4px 12px rgba(0, 50, 45, 0.04);
+      border: 1px solid #e0edeb;
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0, 70, 60, 0.08);
+      border-color: #b1d2cf;
+      transform: translateY(-3px);
+    }
+
+    .card .card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #dcf0ee;
+      border-radius: 40px;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 16px;
+      font-size: 1.6rem;
+      color: #0b5d59;
+    }
+
+    .card h3 {
+      font-size: 1.18rem;
+      font-weight: 620;
+      color: #0a4c49;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 0.96rem;
+      color: #2a4042;
+      margin-bottom: 12px;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #e9f3f1;
+      padding: 2px 12px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #1d6d69;
+      margin-right: 6px;
+      border: 1px solid #d3e4e1;
+    }
+
+    /* ——— 三段式自然介绍（杂志内文） ——— */
+    .magazine-article {
+      background: white;
+      border-radius: 28px;
+      padding: 32px 28px;
+      margin-bottom: 32px;
+      border: 1px solid #dcebe8;
+    }
+
+    .magazine-article h2 {
+      font-size: 1.5rem;
+      font-weight: 630;
+      color: #064745;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .magazine-article h2 span {
+      background: #b8d9d5;
+      width: 6px;
+      height: 24px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    .article-block {
+      margin-bottom: 28px;
+    }
+
+    .article-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-block h3 {
+      font-size: 1.12rem;
+      font-weight: 590;
+      color: #0f5f5b;
+      margin-bottom: 6px;
+    }
+
+    .article-block p {
+      font-size: 1rem;
+      color: #1e3d3b;
+      margin-bottom: 4px;
+    }
+
+    .article-block .meta-note {
+      font-size: 0.85rem;
+      color: #52807c;
+      background: #e3f1ef;
+      display: inline-block;
+      padding: 0 10px;
+      border-radius: 20px;
+    }
+
+    .inline-link {
+      color: #1d7873;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1.5px solid #b1d2cf;
+      transition: border-color 0.15s;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #064745;
+      color: #064745;
+    }
+
+    /* ——— FAQ 摘要 ——— */
+    .faq-mini {
+      background: #eef7f5;
+      border-radius: 28px;
+      padding: 28px 28px 20px;
+      margin-bottom: 28px;
+      border-left: 6px solid #2c8a85;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.1rem;
+      font-weight: 620;
+      color: #074e4b;
+      margin-bottom: 14px;
+    }
+
+    .faq-item {
+      margin-bottom: 14px;
+    }
+
+    .faq-item strong {
+      font-weight: 600;
+      color: #0a5b57;
+      display: block;
+      font-size: 0.98rem;
+      margin-bottom: 2px;
+    }
+
+    .faq-item p {
+      font-size: 0.93rem;
+      color: #2a524f;
+      margin-left: 12px;
+    }
+
+    /* ——— 页尾提示 ——— */
+    .footer-note {
+      text-align: center;
+      padding: 22px 12px 12px;
+      border-top: 1px solid #cde0dd;
+      margin-top: 28px;
+      font-size: 0.9rem;
+      color: #306b67;
+    }
+
+    .footer-note a {
+      color: #064745;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px solid #b1d2cf;
+    }
+
+    .footer-note a:hover {
+      color: #023b38;
+      border-bottom-color: #064745;
+    }
+
+    .footer-note .small-meta {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: #50807c;
+      letter-spacing: 0.3px;
+    }
+
+    /* ——— 响应式细节 ——— */
+    @media (max-width: 600px) {
+      body {
+        padding: 16px 10px 40px;
+      }
+
+      .magazine-hero {
+        padding: 28px 18px 24px;
+        border-radius: 24px;
+      }
+
+      .magazine-hero h1 {
+        font-size: 2rem;
+      }
+
+      .magazine-hero p {
+        font-size: 0.98rem;
+      }
+
+      .card-grid {
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 22px 18px 18px;
+      }
+
+      .magazine-article {
+        padding: 24px 18px;
+        border-radius: 22px;
+      }
+
+      .magazine-article h2 {
+        font-size: 1.3rem;
+      }
+
+      .faq-mini {
+        padding: 22px 18px 16px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- 杂志封面式 hero -->
+    <div class="magazine-hero">
+      <div class="sub-label">🎮 专题 · 游戏发现</div>
+      <h1>爱游戏 · 从心选</h1>
+      <span class="deco-line"></span>
+      <p>在纷繁的游戏世界里，<a href="https://roots-ayx.com" class="inline-link">爱游戏</a> 帮你快速找到玩法、类型和社区氛围都合拍的作品，不必在几百款列表里盲目翻找。</p>
+    </div>
+
+    <!-- 网格卡片: 特点 / 场景 -->
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🕹️</div>
+        <h3>类型梳理</h3>
+        <p>从独立小品到大型在线世界，按动作、策略、角色扮演等维度整理，一目了然。</p>
+        <span class="tag">RPG</span><span class="tag">模拟</span><span class="tag">动作</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>快速参考</h3>
+        <p>每款游戏用一句话说清核心玩法和适合人群，减少反复跳转页面查阅的时间。</p>
+        <span class="tag">轻量化</span><span class="tag">效率</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>社区视角</h3>
+        <p>收录来自不同社群的真实体验和讨论焦点，帮助你评估游戏是否符合自己的偏好。</p>
+        <span class="tag">讨论</span><span class="tag">真实</span>
+      </div>
+    </div>
+
+    <!-- 三段自然介绍 + 场景展开 -->
+    <div class="magazine-article">
+      <h2><span></span> 从你的习惯出发 · 三段整理</h2>
+
+      <div class="article-block">
+        <h3>❶ 先看类型，再选作品</h3>
+        <p>大部分人在挑选游戏时，第一步是确定想玩什么类型。是喜欢高速对战，还是沉浸式的剧情冒险？在 <a href="https://roots-ayx.com" class="inline-link">爱游戏</a> 里，你可以按类型浏览，每个品类都有若干代表性作品和简要说明，方便横向比较。</p>
+        <span class="meta-note">覆盖二十余个子分类</span>
+      </div>
+
+      <div class="article-block">
+        <h3>❷ 了解作品节奏与氛围</h3>
+        <p>除了类型标签，还会补充游戏的节奏（快慢、是否回合制）、美术风格、单人/多人比重。比如有些人偏爱通勤路上玩几局的轻量游戏，也有人愿意周末大段时间投入开放世界。这些信息在卡片和介绍段落中都会自然呈现。</p>
+      </div>
+
+      <div class="article-block">
+        <h3>❸ 关注社区讨论与评价</h3>
+        <p>经常有玩家问：“这款游戏值得花时间吗？” 网站整理了来自不同论坛、评测和玩家社群的反馈提炼，但不做极端吹捧或贬低。你想了解某款游戏的实际口碑，可以借助这些参考框架快速建立印象。</p>
+        <span class="meta-note">参考来源包括主流游戏社区与玩家评价</span>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 — 简洁而有区分度 -->
+    <div class="faq-mini">
+      <h3>❓ 常见疑问摘要</h3>
+      <div class="faq-item">
+        <strong>网站上的游戏推荐是主观筛选吗？</strong>
+        <p>基于类型、玩家活跃度和综合讨论热度进行整理，不依赖单一评分，尽量覆盖不同口味的作品。</p>
+      </div>
+      <div class="faq-item">
+        <strong>是否包含手机游戏？</strong>
+        <p>目前以主机、PC及跨平台作品为主，部分热门手游若社区讨论丰富也会收录。</p>
+      </div>
+      <div class="faq-item">
+        <strong>多久更新一次内容？</strong>
+        <p>根据新作发布和社区关注度变化不定期更新，重要节点会有专题补充。</p>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+      <p>如果想直接浏览完整列表，可以前往 <a href="https://roots-ayx.com">爱游戏</a> 查看分类页和最新整理。</p>
+      <span class="small-meta">—— 按类别 · 按热度 · 按你的节奏 ——</span>
+    </div>
+
+  </div>
+</body>
+</html>
